@@ -1,0 +1,362 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.title-container {
+    border: 3px solid #04EDFC;
+    border-radius: 15px;
+    padding: 10px 20px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 25px rgba(4, 237, 252, 0.5);
+}
+
+.title-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #04EDFC, #0470FC, #04EDFC);
+    z-index: -1;
+    opacity: 0.7;
+    animation: borderGlow 8s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.3; }
+}
+
+.title {
+    color: #04EDFC;
+    font-size: clamp(18px, 5vw, 28px);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    animation: slide 12s linear infinite;
+    text-shadow: 0 0 15px #04EDFC;
+    font-weight: 700;
+}
+
+@keyframes slide {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.org-chart {
+    width: 100%;
+    max-width: 900px;
+    margin: 100px auto 50px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.node {
+    width: 160px;
+    min-height: 100px;
+    background: rgba(10, 25, 40, 0.6);
+    border: 2px solid #04EDFC;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    margin: 10px;
+    padding: 15px 10px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 20px rgba(4, 237, 252, 0.2);
+    backdrop-filter: blur(2px);
+    overflow: hidden;
+}
+
+.node::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(4, 237, 252, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.node:hover::before {
+    opacity: 1;
+}
+
+.icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #04EDFC;
+    position: relative;
+    display: inline-block;
+    will-change: transform; /* Optimisation des performances */
+}
+
+/* Animation spécifique pour RH - Garantie de rester visible */
+#rh .icon i {
+    animation: rhPulse 2s infinite ease-in-out;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+}
+
+@keyframes rhPulse {
+    0%, 100% { 
+        transform: scale(1) translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.1) translateY(-3px) rotate(2deg);
+        opacity: 1;
+    }
+}
+
+/* Animations des autres icônes */
+.fa-crown {
+    animation: rotate 8s infinite, shine 2s infinite;
+}
+.fa-chess-queen {
+    animation: tilt 3s infinite, pulse 1.5s infinite;
+}
+.fa-file-signature {
+    animation: bounce 1s infinite, shake 5s infinite;
+}
+.fa-handshake {
+    animation: shake 1.5s infinite;
+}
+.fa-video {
+    animation: flash 2s infinite;
+}
+.fa-paint-brush {
+    animation: swing 2s infinite;
+}
+
+@keyframes rotate {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes shine {
+    0%, 100% { text-shadow: 0 0 10px rgba(4, 237, 252, 0.5); }
+    50% { text-shadow: 0 0 20px gold, 0 0 30px rgba(4, 237, 252, 0.8); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes tilt {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes swing {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+}
+
+.node .position {
+    font-weight: bold;
+    color: #04EDFC;
+    margin-bottom: 8px;
+    font-size: 15px;
+    text-shadow: 0 0 10px rgba(4, 237, 252, 0.5);
+    position: relative;
+}
+
+.node .position::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #04EDFC;
+    box-shadow: 0 0 10px #04EDFC;
+    animation: linePulse 3s infinite;
+}
+
+@keyframes linePulse {
+    0%, 100% { width: 40px; opacity: 1; }
+    50% { width: 60px; opacity: 0.7; }
+}
+
+.president {
+    width: 200px;
+    min-height: 120px;
+    background: rgba(4, 237, 252, 0.1);
+    font-size: 15px;
+    box-shadow: 0 0 30px rgba(4, 237, 252, 0.3);
+}
+
+.president .position {
+    font-size: 18px;
+}
+
+.connector {
+    position: absolute;
+    height: 40px;
+    width: 4px;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    background: linear-gradient(to bottom, 
+        rgba(4, 237, 252, 0.8), 
+        rgba(4, 237, 252, 0.4));
+    box-shadow: 0 0 15px rgba(4, 237, 252, 0.7);
+    animation: connectorPulse 3s infinite;
+}
+
+@keyframes connectorPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+}
+
+.connection-path {
+    position: absolute;
+    height: 2px;
+    background: transparent;
+    z-index: 1;
+    transform-origin: left center;
+    overflow: visible;
+}
+
+.connection-path::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, 
+        rgba(4, 237, 252, 0.8), 
+        rgba(4, 237, 252, 0.4));
+    box-shadow: 0 0 10px rgba(4, 237, 252, 0.5);
+    animation: flow 3s linear infinite;
+}
+
+@keyframes flow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Fond avec particules */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #04EDFC;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float linear infinite;
+}
+
+@keyframes float {
+    to { transform: translateY(-100vh); }
+}
+
+@media (max-width: 768px) {
+    .org-chart {
+        margin-top: 80px;
+        padding: 15px 10px;
+    }
+    
+    .node {
+        width: 140px;
+        min-height: 90px;
+        margin: 8px;
+        font-size: 12px;
+    }
+    
+    .president {
+        width: 180px;
+        min-height: 110px;
+    }
+    
+    .icon {
+        font-size: 24px;
+    }
+    
+    .connector {
+        height: 30px;
+        bottom: -30px;
+    }
+}
