@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organigramme du Club "FUTURE VISION"</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="header">
+        <div class="title-container">
+            <div class="title">Organigramme du Club "FUTURE VISION"</div>
+        </div>
+    </div>
+    
+    <div class="org-chart">
+        <!-- Niveau 1 - Président -->
+        <div class="level">
+            <div class="node president" id="president">
+                <div class="icon"><i class="fas fa-crown"></i></div>
+                <div class="position">Président</div>
+                <div class="connector" id="connector1"></div>
+            </div>
+        </div>
+        
+        <!-- Niveau 2 - Vice-Président -->
+        <div class="level">
+            <div class="node" id="vice-president">
+                <div class="icon"><i class="fas fa-chess-queen"></i></div>
+                <div class="position">Vice-Président</div>
+                <div class="connector" id="connector2"></div>
+            </div>
+        </div>
+        
+        <!-- Niveau 3 - Secrétaire Général -->
+        <div class="level">
+            <div class="node" id="secretaire">
+                <div class="icon"><i class="fas fa-file-signature"></i></div>
+                <div class="position">Secrétaire Général</div>
+                <div class="connector" id="connector3"></div>
+            </div>
+        </div>
+        
+        <!-- Niveau 4 - Responsables -->
+        <div class="level">
+            <div class="node" id="rh">
+                <div class="icon"><i class="fas fa-users"></i></div>
+                <div class="position">Responsable RH</div>
+            </div>
+            
+            <div class="node" id="re">
+                <div class="icon"><i class="fas fa-handshake"></i></div>
+                <div class="position">Responsable RE</div>
+            </div>
+            
+            <div class="node" id="media">
+                <div class="icon"><i class="fas fa-video"></i></div>
+                <div class="position">Responsable Media</div>
+            </div>
+            
+            <div class="node" id="design">
+                <div class="icon"><i class="fas fa-paint-brush"></i></div>
+                <div class="position">Responsable Design</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
